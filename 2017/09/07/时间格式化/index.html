@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/NorthNothing/NorthNothing.io.git">
-  <title>Nothing</title>
+  <title>日期格式化和解析工具类 | Nothing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="分享自己写的JS版日期格式化和解析工具类，绝对好用！日期格式化1.1. 使用说明formatDate(date, fmt)，其中fmt支持的格式有：  y（年） M（月） d（日） q（季度） w（星期） H（24小时制的小时） h（12小时制的小时） m（分钟） s（秒） S（毫秒）  另外，字符的个数决定输出字符的长度，如，yy输出16，yyyy输出2016，ww输出周五，www输出星期五，等">
+  <meta name="description" content="日期格式化1.1. 使用说明formatDate(date, fmt)，其中fmt支持的格式有：  y（年） M（月） d（日） q（季度） w（星期） H（24小时制的小时） h（12小时制的小时） m（分钟） s（秒） S（毫秒）  另外，字符的个数决定输出字符的长度，如，yy输出16，yyyy输出2016，ww输出周五，www输出星期五，等等。 1.2. 代码完整代码一共30行： 12345">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nothing">
+<meta property="og:title" content="日期格式化和解析工具类">
 <meta property="og:url" content="https://github.com/NorthNothing/NorthNothing.io.git/2017/09/07/时间格式化/index.html">
 <meta property="og:site_name" content="Nothing">
-<meta property="og:description" content="分享自己写的JS版日期格式化和解析工具类，绝对好用！日期格式化1.1. 使用说明formatDate(date, fmt)，其中fmt支持的格式有：  y（年） M（月） d（日） q（季度） w（星期） H（24小时制的小时） h（12小时制的小时） m（分钟） s（秒） S（毫秒）  另外，字符的个数决定输出字符的长度，如，yy输出16，yyyy输出2016，ww输出周五，www输出星期五，等">
+<meta property="og:description" content="日期格式化1.1. 使用说明formatDate(date, fmt)，其中fmt支持的格式有：  y（年） M（月） d（日） q（季度） w（星期） H（24小时制的小时） h（12小时制的小时） m（分钟） s（秒） S（毫秒）  另外，字符的个数决定输出字符的长度，如，yy输出16，yyyy输出2016，ww输出周五，www输出星期五，等等。 1.2. 代码完整代码一共30行： 12345">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-09-07T09:57:55.727Z">
+<meta property="og:updated_time" content="2017-09-07T10:12:53.892Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nothing">
-<meta name="twitter:description" content="分享自己写的JS版日期格式化和解析工具类，绝对好用！日期格式化1.1. 使用说明formatDate(date, fmt)，其中fmt支持的格式有：  y（年） M（月） d（日） q（季度） w（星期） H（24小时制的小时） h（12小时制的小时） m（分钟） s（秒） S（毫秒）  另外，字符的个数决定输出字符的长度，如，yy输出16，yyyy输出2016，ww输出周五，www输出星期五，等">
+<meta name="twitter:title" content="日期格式化和解析工具类">
+<meta name="twitter:description" content="日期格式化1.1. 使用说明formatDate(date, fmt)，其中fmt支持的格式有：  y（年） M（月） d（日） q（季度） w（星期） H（24小时制的小时） h（12小时制的小时） m（分钟） s（秒） S（毫秒）  另外，字符的个数决定输出字符的长度，如，yy输出16，yyyy输出2016，ww输出周五，www输出星期五，等等。 1.2. 代码完整代码一共30行： 12345">
   
     <link rel="alternative" href="/atom.xml" title="Nothing" type="application/atom+xml">
   
@@ -157,9 +157,24 @@
             <article id="post-时间格式化" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      日期格式化和解析工具类
+    </h1>
+  
+
+        
+        <a href="/2017/09/07/时间格式化/" class="archive-article-date">
+  	<time datetime="2017-09-07T09:55:34.319Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-07</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="分享自己写的JS版日期格式化和解析工具类，绝对好用！"><a href="#分享自己写的JS版日期格式化和解析工具类，绝对好用！" class="headerlink" title="分享自己写的JS版日期格式化和解析工具类，绝对好用！"></a><a href="http://www.cnblogs.com/liuxianan/p/js-date-format-parse.html" target="_blank" rel="external">分享自己写的JS版日期格式化和解析工具类，绝对好用！</a></h1><h1 id="日期格式化"><a href="#日期格式化" class="headerlink" title="日期格式化"></a>日期格式化</h1><h2 id="1-1-使用说明"><a href="#1-1-使用说明" class="headerlink" title="1.1. 使用说明"></a>1.1. 使用说明</h2><p>formatDate(date, fmt)，其中fmt支持的格式有：</p>
+        <h1 id="日期格式化"><a href="#日期格式化" class="headerlink" title="日期格式化"></a>日期格式化</h1><h2 id="1-1-使用说明"><a href="#1-1-使用说明" class="headerlink" title="1.1. 使用说明"></a>1.1. 使用说明</h2><p>formatDate(date, fmt)，其中fmt支持的格式有：</p>
 <ul>
 <li>y（年）</li>
 <li>M（月）</li>
@@ -286,7 +301,7 @@
   
   
     <a href="/2017/09/05/浏览器默认行为/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
+      <div class="article-nav-title">浏览器默认行为</div>
       <i class="icon-circle-right"></i>
     </a>
   
