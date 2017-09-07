@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/NorthNothing/NorthNothing.io.git">
-  <title>Archives: 2017/8 | Nothing</title>
+  <title>Nothing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="分享自己写的JS版日期格式化和解析工具类，绝对好用！日期格式化1.1. 使用说明formatDate(date, fmt)，其中fmt支持的格式有：  y（年） M（月） d（日） q（季度） w（星期） H（24小时制的小时） h（12小时制的小时） m（分钟） s（秒） S（毫秒）  另外，字符的个数决定输出字符的长度，如，yy输出16，yyyy输出2016，ww输出周五，www输出星期五，等">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Nothing">
-<meta property="og:url" content="https://github.com/NorthNothing/NorthNothing.io.git/archives/2017/08/index.html">
+<meta property="og:url" content="https://github.com/NorthNothing/NorthNothing.io.git/2017/09/07/时间格式化/index.html">
 <meta property="og:site_name" content="Nothing">
+<meta property="og:description" content="分享自己写的JS版日期格式化和解析工具类，绝对好用！日期格式化1.1. 使用说明formatDate(date, fmt)，其中fmt支持的格式有：  y（年） M（月） d（日） q（季度） w（星期） H（24小时制的小时） h（12小时制的小时） m（分钟） s（秒） S（毫秒）  另外，字符的个数决定输出字符的长度，如，yy输出16，yyyy输出2016，ww输出周五，www输出星期五，等">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-07T09:57:55.727Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nothing">
+<meta name="twitter:description" content="分享自己写的JS版日期格式化和解析工具类，绝对好用！日期格式化1.1. 使用说明formatDate(date, fmt)，其中fmt支持的格式有：  y（年） M（月） d（日） q（季度） w（星期） H（24小时制的小时） h（12小时制的小时） m（分钟） s（秒） S（毫秒）  另外，字符的个数决定输出字符的长度，如，yy输出16，yyyy输出2016，ww输出周五，www输出星期五，等">
   
     <link rel="alternative" href="/atom.xml" title="Nothing" type="application/atom+xml">
   
@@ -150,49 +154,170 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-时间格式化" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="分享自己写的JS版日期格式化和解析工具类，绝对好用！"><a href="#分享自己写的JS版日期格式化和解析工具类，绝对好用！" class="headerlink" title="分享自己写的JS版日期格式化和解析工具类，绝对好用！"></a><a href="http://www.cnblogs.com/liuxianan/p/js-date-format-parse.html" target="_blank" rel="external">分享自己写的JS版日期格式化和解析工具类，绝对好用！</a></h1><h1 id="日期格式化"><a href="#日期格式化" class="headerlink" title="日期格式化"></a>日期格式化</h1><h2 id="1-1-使用说明"><a href="#1-1-使用说明" class="headerlink" title="1.1. 使用说明"></a>1.1. 使用说明</h2><p>formatDate(date, fmt)，其中fmt支持的格式有：</p>
+<ul>
+<li>y（年）</li>
+<li>M（月）</li>
+<li>d（日）</li>
+<li>q（季度）</li>
+<li>w（星期）</li>
+<li>H（24小时制的小时）</li>
+<li>h（12小时制的小时）</li>
+<li>m（分钟）</li>
+<li>s（秒）</li>
+<li>S（毫秒）</li>
+</ul>
+<p>另外，字符的个数决定输出字符的长度，如，<code>yy</code>输出16，<code>yyyy</code>输出2016，<code>ww</code>输出周五，<code>www</code>输出星期五，等等。</p>
+<h2 id="1-2-代码"><a href="#1-2-代码" class="headerlink" title="1.2. 代码"></a>1.2. 代码</h2><p>完整代码一共30行：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 将日期格式化成指定格式的字符串</span></div><div class="line"><span class="comment"> * @param date 要格式化的日期，不传时默认当前时间，也可以是一个时间戳</span></div><div class="line"><span class="comment"> * @param fmt 目标字符串格式，支持的字符有：y,M,d,q,w,H,h,m,S，默认：yyyy-MM-dd HH:mm:ss</span></div><div class="line"><span class="comment"> * @returns 返回格式化后的日期字符串</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatDate</span>(<span class="params">date, fmt</span>)</span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    date = date == <span class="literal">undefined</span> ? <span class="keyword">new</span> <span class="built_in">Date</span>() : date;</div><div class="line">    date = <span class="keyword">typeof</span> date == <span class="string">'number'</span> ? <span class="keyword">new</span> <span class="built_in">Date</span>(date) : date;</div><div class="line">    fmt = fmt || <span class="string">'yyyy-MM-dd HH:mm:ss'</span>;</div><div class="line">    <span class="keyword">var</span> obj =</div><div class="line">    &#123;</div><div class="line">        <span class="string">'y'</span>: date.getFullYear(), <span class="comment">// 年份，注意必须用getFullYear</span></div><div class="line">        <span class="string">'M'</span>: date.getMonth() + <span class="number">1</span>, <span class="comment">// 月份，注意是从0-11</span></div><div class="line">        <span class="string">'d'</span>: date.getDate(), <span class="comment">// 日期</span></div><div class="line">        <span class="string">'q'</span>: <span class="built_in">Math</span>.floor((date.getMonth() + <span class="number">3</span>) / <span class="number">3</span>), <span class="comment">// 季度</span></div><div class="line">        <span class="string">'w'</span>: date.getDay(), <span class="comment">// 星期，注意是0-6</span></div><div class="line">        <span class="string">'H'</span>: date.getHours(), <span class="comment">// 24小时制</span></div><div class="line">        <span class="string">'h'</span>: date.getHours() % <span class="number">12</span> == <span class="number">0</span> ? <span class="number">12</span> : date.getHours() % <span class="number">12</span>, <span class="comment">// 12小时制</span></div><div class="line">        <span class="string">'m'</span>: date.getMinutes(), <span class="comment">// 分钟</span></div><div class="line">        <span class="string">'s'</span>: date.getSeconds(), <span class="comment">// 秒</span></div><div class="line">        <span class="string">'S'</span>: date.getMilliseconds() <span class="comment">// 毫秒</span></div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> week = [<span class="string">'天'</span>, <span class="string">'一'</span>, <span class="string">'二'</span>, <span class="string">'三'</span>, <span class="string">'四'</span>, <span class="string">'五'</span>, <span class="string">'六'</span>];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> obj)</div><div class="line">    &#123;</div><div class="line">        fmt = fmt.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(i+<span class="string">'+'</span>, <span class="string">'g'</span>), <span class="function"><span class="keyword">function</span>(<span class="params">m</span>)</span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            <span class="keyword">var</span> val = obj[i] + <span class="string">''</span>;</div><div class="line">            <span class="keyword">if</span>(i == <span class="string">'w'</span>) <span class="keyword">return</span> (m.length &gt; <span class="number">2</span> ? <span class="string">'星期'</span> : <span class="string">'周'</span>) + week[val];</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>, len = val.length; j &lt; m.length - len; j++) val = <span class="string">'0'</span> + val;</div><div class="line">            <span class="keyword">return</span> m.length == <span class="number">1</span> ? val : val.substring(val.length - m.length);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> fmt;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="1-3-使用示例"><a href="#1-3-使用示例" class="headerlink" title="1.3. 使用示例"></a>1.3. 使用示例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">formatDate(); <span class="comment">// 2016-09-02 13:17:13</span></div><div class="line">formatDate(<span class="keyword">new</span> <span class="built_in">Date</span>(), <span class="string">'yyyy-MM-dd'</span>); <span class="comment">// 2016-09-02</span></div><div class="line"><span class="comment">// 2016-09-02 第3季度 星期五 13:19:15:792</span></div><div class="line">formatDate(<span class="keyword">new</span> <span class="built_in">Date</span>(), <span class="string">'yyyy-MM-dd 第q季度 www HH:mm:ss:SSS'</span>);</div><div class="line">formatDate(<span class="number">1472793615764</span>); <span class="comment">// 2016-09-02 13:20:15</span></div></pre></td></tr></table></figure>
+<h1 id="日期解析"><a href="#日期解析" class="headerlink" title="日期解析"></a>日期解析</h1><h2 id="2-1-说明"><a href="#2-1-说明" class="headerlink" title="2.1. 说明"></a>2.1. 说明</h2><p>parseDate(str, fmt)，其中fmt支持的格式有：</p>
+<ul>
+<li>y（年）</li>
+<li>M（月）</li>
+<li>d（日）</li>
+<li>H（24小时制的小时）</li>
+<li>h（12小时制的小时）</li>
+<li>m（分钟）</li>
+<li>s（秒）</li>
+<li>S（毫秒）</li>
+</ul>
+<h2 id="2-2-完整代码"><a href="#2-2-完整代码" class="headerlink" title="2.2. 完整代码"></a>2.2. 完整代码</h2><p>完整代码共17行：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 将字符串解析成日期</span></div><div class="line"><span class="comment"> * @param str 输入的日期字符串，如'2014-09-13'</span></div><div class="line"><span class="comment"> * @param fmt 字符串格式，默认'yyyy-MM-dd'，支持如下：y、M、d、H、m、s、S，不支持w和q</span></div><div class="line"><span class="comment"> * @returns 解析后的Date类型日期</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">parseDate</span>(<span class="params">str, fmt</span>)</span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    fmt = fmt || <span class="string">'yyyy-MM-dd'</span>;</div><div class="line">    <span class="keyword">var</span> obj = &#123;<span class="attr">y</span>: <span class="number">0</span>, <span class="attr">M</span>: <span class="number">1</span>, <span class="attr">d</span>: <span class="number">0</span>, <span class="attr">H</span>: <span class="number">0</span>, <span class="attr">h</span>: <span class="number">0</span>, <span class="attr">m</span>: <span class="number">0</span>, <span class="attr">s</span>: <span class="number">0</span>, <span class="attr">S</span>: <span class="number">0</span>&#125;;</div><div class="line">    fmt.replace(<span class="regexp">/([^yMdHmsS]*?)(([yMdHmsS])\3*)([^yMdHmsS]*?)/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">m, $<span class="number">1</span>, $<span class="number">2</span>, $<span class="number">3</span>, $<span class="number">4</span>, idx, old</span>)</span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        str = str.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>($<span class="number">1</span>+<span class="string">'(\\d&#123;'</span>+$<span class="number">2.</span>length+<span class="string">'&#125;)'</span>+$<span class="number">4</span>), <span class="function"><span class="keyword">function</span>(<span class="params">_m, _$<span class="number">1</span></span>)</span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            obj[$<span class="number">3</span>] = <span class="built_in">parseInt</span>(_$<span class="number">1</span>);</div><div class="line">            <span class="keyword">return</span> <span class="string">''</span>;</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">return</span> <span class="string">''</span>;</div><div class="line">    &#125;);</div><div class="line">    obj.M--; <span class="comment">// 月份是从0开始的，所以要减去1</span></div><div class="line">    <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(obj.y, obj.M, obj.d, obj.H, obj.m, obj.s);</div><div class="line">    <span class="keyword">if</span>(obj.S !== <span class="number">0</span>) date.setMilliseconds(obj.S); <span class="comment">// 如果设置了毫秒</span></div><div class="line">    <span class="keyword">return</span> date;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="2-3-示例代码"><a href="#2-3-示例代码" class="headerlink" title="2.3. 示例代码"></a>2.3. 示例代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">parseDate(&apos;2016-08-11&apos;); // Thu Aug 11 2016 00:00:00 GMT+0800</div><div class="line">parseDate(&apos;2016-08-11 13:28:43&apos;, &apos;yyyy-MM-dd HH:mm:ss&apos;) // Thu Aug 11 2016 13:28:43 GMT+0800</div></pre></td></tr></table></figure>
+<h1 id="其它日期相关方法"><a href="#其它日期相关方法" class="headerlink" title="其它日期相关方法"></a>其它日期相关方法</h1><p>其它自己还简单封装了几个方法，这里干脆一起贴出来了，包括上面的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * =====================================</span></div><div class="line"><span class="comment"> *               日期相关方法</span></div><div class="line"><span class="comment"> * =====================================</span></div><div class="line"><span class="comment"> */</span></div><div class="line">;(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>)</span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    $.extend(</div><div class="line">    &#123;</div><div class="line">        <span class="comment">/**</span></div><div class="line"><span class="comment">         * 将日期格式化成指定格式的字符串</span></div><div class="line"><span class="comment">         * @param date 要格式化的日期，不传时默认当前时间，也可以是一个时间戳</span></div><div class="line"><span class="comment">         * @param fmt 目标字符串格式，支持的字符有：y,M,d,q,w,H,h,m,S，默认：yyyy-MM-dd HH:mm:ss</span></div><div class="line"><span class="comment">         * @returns 返回格式化后的日期字符串</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        formatDate: <span class="function"><span class="keyword">function</span>(<span class="params">date, fmt</span>)</span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            date = date == <span class="literal">undefined</span> ? <span class="keyword">new</span> <span class="built_in">Date</span>() : date;</div><div class="line">            date = <span class="keyword">typeof</span> date == <span class="string">'number'</span> ? <span class="keyword">new</span> <span class="built_in">Date</span>(date) : date;</div><div class="line">            fmt = fmt || <span class="string">'yyyy-MM-dd HH:mm:ss'</span>;</div><div class="line">            <span class="keyword">var</span> obj =</div><div class="line">            &#123;</div><div class="line">                <span class="string">'y'</span>: date.getFullYear(), <span class="comment">// 年份，注意必须用getFullYear</span></div><div class="line">                <span class="string">'M'</span>: date.getMonth() + <span class="number">1</span>, <span class="comment">// 月份，注意是从0-11</span></div><div class="line">                <span class="string">'d'</span>: date.getDate(), <span class="comment">// 日期</span></div><div class="line">                <span class="string">'q'</span>: <span class="built_in">Math</span>.floor((date.getMonth() + <span class="number">3</span>) / <span class="number">3</span>), <span class="comment">// 季度</span></div><div class="line">                <span class="string">'w'</span>: date.getDay(), <span class="comment">// 星期，注意是0-6</span></div><div class="line">                <span class="string">'H'</span>: date.getHours(), <span class="comment">// 24小时制</span></div><div class="line">                <span class="string">'h'</span>: date.getHours() % <span class="number">12</span> == <span class="number">0</span> ? <span class="number">12</span> : date.getHours() % <span class="number">12</span>, <span class="comment">// 12小时制</span></div><div class="line">                <span class="string">'m'</span>: date.getMinutes(), <span class="comment">// 分钟</span></div><div class="line">                <span class="string">'s'</span>: date.getSeconds(), <span class="comment">// 秒</span></div><div class="line">                <span class="string">'S'</span>: date.getMilliseconds() <span class="comment">// 毫秒</span></div><div class="line">            &#125;;</div><div class="line">            <span class="keyword">var</span> week = [<span class="string">'天'</span>, <span class="string">'一'</span>, <span class="string">'二'</span>, <span class="string">'三'</span>, <span class="string">'四'</span>, <span class="string">'五'</span>, <span class="string">'六'</span>];</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> obj)</div><div class="line">            &#123;</div><div class="line">                fmt = fmt.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(i+<span class="string">'+'</span>, <span class="string">'g'</span>), <span class="function"><span class="keyword">function</span>(<span class="params">m</span>)</span></div><div class="line"><span class="function">                </span>&#123;</div><div class="line">                    <span class="keyword">var</span> val = obj[i] + <span class="string">''</span>;</div><div class="line">                    <span class="keyword">if</span>(i == <span class="string">'w'</span>) <span class="keyword">return</span> (m.length &gt; <span class="number">2</span> ? <span class="string">'星期'</span> : <span class="string">'周'</span>) + week[val];</div><div class="line">                    <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>, len = val.length; j &lt; m.length - len; j++) val = <span class="string">'0'</span> + val;</div><div class="line">                    <span class="keyword">return</span> m.length == <span class="number">1</span> ? val : val.substring(val.length - m.length);</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> fmt;</div><div class="line">        &#125;,</div><div class="line">        <span class="comment">/**</span></div><div class="line"><span class="comment">         * 将字符串解析成日期</span></div><div class="line"><span class="comment">         * @param str 输入的日期字符串，如'2014-09-13'</span></div><div class="line"><span class="comment">         * @param fmt 字符串格式，默认'yyyy-MM-dd'，支持如下：y、M、d、H、m、s、S，不支持w和q</span></div><div class="line"><span class="comment">         * @returns 解析后的Date类型日期</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        parseDate: <span class="function"><span class="keyword">function</span>(<span class="params">str, fmt</span>)</span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            fmt = fmt || <span class="string">'yyyy-MM-dd'</span>;</div><div class="line">            <span class="keyword">var</span> obj = &#123;<span class="attr">y</span>: <span class="number">0</span>, <span class="attr">M</span>: <span class="number">1</span>, <span class="attr">d</span>: <span class="number">0</span>, <span class="attr">H</span>: <span class="number">0</span>, <span class="attr">h</span>: <span class="number">0</span>, <span class="attr">m</span>: <span class="number">0</span>, <span class="attr">s</span>: <span class="number">0</span>, <span class="attr">S</span>: <span class="number">0</span>&#125;;</div><div class="line">            fmt.replace(<span class="regexp">/([^yMdHmsS]*?)(([yMdHmsS])\3*)([^yMdHmsS]*?)/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">m, $<span class="number">1</span>, $<span class="number">2</span>, $<span class="number">3</span>, $<span class="number">4</span>, idx, old</span>)</span></div><div class="line"><span class="function">            </span>&#123;</div><div class="line">                str = str.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>($<span class="number">1</span>+<span class="string">'(\\d&#123;'</span>+$<span class="number">2.</span>length+<span class="string">'&#125;)'</span>+$<span class="number">4</span>), <span class="function"><span class="keyword">function</span>(<span class="params">_m, _$<span class="number">1</span></span>)</span></div><div class="line"><span class="function">                </span>&#123;</div><div class="line">                    obj[$<span class="number">3</span>] = <span class="built_in">parseInt</span>(_$<span class="number">1</span>);</div><div class="line">                    <span class="keyword">return</span> <span class="string">''</span>;</div><div class="line">                &#125;);</div><div class="line">                <span class="keyword">return</span> <span class="string">''</span>;</div><div class="line">            &#125;);</div><div class="line">            obj.M--; <span class="comment">// 月份是从0开始的，所以要减去1</span></div><div class="line">            <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(obj.y, obj.M, obj.d, obj.H, obj.m, obj.s);</div><div class="line">            <span class="keyword">if</span>(obj.S !== <span class="number">0</span>) date.setMilliseconds(obj.S); <span class="comment">// 如果设置了毫秒</span></div><div class="line">            <span class="keyword">return</span> date;</div><div class="line">        &#125;,</div><div class="line">        <span class="comment">/**</span></div><div class="line"><span class="comment">         * 将一个日期格式化成友好格式，比如，1分钟以内的返回“刚刚”，</span></div><div class="line"><span class="comment">         * 当天的返回时分，当年的返回月日，否则，返回年月日</span></div><div class="line"><span class="comment">         * @param &#123;Object&#125; date</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        formatDateToFriendly: <span class="function"><span class="keyword">function</span>(<span class="params">date</span>)</span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            date = date || <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">            date = <span class="keyword">typeof</span> date === <span class="string">'number'</span> ? <span class="keyword">new</span> <span class="built_in">Date</span>(date) : date;</div><div class="line">            <span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">            <span class="keyword">if</span>((now.getTime() - date.getTime()) &lt; <span class="number">60</span>*<span class="number">1000</span>) <span class="keyword">return</span> <span class="string">'刚刚'</span>; <span class="comment">// 1分钟以内视作“刚刚”</span></div><div class="line">            <span class="keyword">var</span> temp = <span class="keyword">this</span>.formatDate(date, <span class="string">'yyyy年M月d'</span>);</div><div class="line">            <span class="keyword">if</span>(temp == <span class="keyword">this</span>.formatDate(now, <span class="string">'yyyy年M月d'</span>)) <span class="keyword">return</span> <span class="keyword">this</span>.formatDate(date, <span class="string">'HH:mm'</span>);</div><div class="line">            <span class="keyword">if</span>(date.getFullYear() == now.getFullYear()) <span class="keyword">return</span> <span class="keyword">this</span>.formatDate(date, <span class="string">'M月d日'</span>);</div><div class="line">            <span class="keyword">return</span> temp;</div><div class="line">        &#125;,</div><div class="line">        <span class="comment">/**</span></div><div class="line"><span class="comment">         * 将一段时长转换成友好格式，如：</span></div><div class="line"><span class="comment">         * 147-&gt;“2分27秒”</span></div><div class="line"><span class="comment">         * 1581-&gt;“26分21秒”</span></div><div class="line"><span class="comment">         * 15818-&gt;“4小时24分”</span></div><div class="line"><span class="comment">         * @param &#123;Object&#125; second</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        formatDurationToFriendly: <span class="function"><span class="keyword">function</span>(<span class="params">second</span>)</span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            <span class="keyword">if</span>(second &lt; <span class="number">60</span>) <span class="keyword">return</span> second + <span class="string">'秒'</span>;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(second &lt; <span class="number">60</span>*<span class="number">60</span>) <span class="keyword">return</span> (second-second%<span class="number">60</span>)/<span class="number">60</span>+<span class="string">'分'</span>+second%<span class="number">60</span>+<span class="string">'秒'</span>;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(second &lt; <span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>) <span class="keyword">return</span> (second-second%<span class="number">3600</span>)/<span class="number">60</span>/<span class="number">60</span>+<span class="string">'小时'</span>+<span class="built_in">Math</span>.round(second%<span class="number">3600</span>/<span class="number">60</span>)+<span class="string">'分'</span>;</div><div class="line">            <span class="keyword">return</span> (second/<span class="number">60</span>/<span class="number">60</span>/<span class="number">24</span>).toFixed(<span class="number">1</span>)+<span class="string">'天'</span>;</div><div class="line">        &#125;,</div><div class="line">        <span class="comment">/** </span></div><div class="line"><span class="comment">         * 将时间转换成MM:SS形式 </span></div><div class="line"><span class="comment">         */</span></div><div class="line">        formatTimeToFriendly: <span class="function"><span class="keyword">function</span>(<span class="params">second</span>)</span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            <span class="keyword">var</span> m = <span class="built_in">Math</span>.floor(second / <span class="number">60</span>);</div><div class="line">            m = m &lt; <span class="number">10</span> ? ( <span class="string">'0'</span> + m ) : m;</div><div class="line">            <span class="keyword">var</span> s = second % <span class="number">60</span>;</div><div class="line">            s = s &lt; <span class="number">10</span> ? ( <span class="string">'0'</span> + s ) : s;</div><div class="line">            <span class="keyword">return</span> m + <span class="string">':'</span> + s;</div><div class="line">        &#125;,</div><div class="line">        <span class="comment">/**</span></div><div class="line"><span class="comment">         * 判断某一年是否是闰年</span></div><div class="line"><span class="comment">         * @param year 可以是一个date类型，也可以是一个int类型的年份，不传默认当前时间</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        isLeapYear: <span class="function"><span class="keyword">function</span>(<span class="params">year</span>)</span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            <span class="keyword">if</span>(year === <span class="literal">undefined</span>) year = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">            <span class="keyword">if</span>(year <span class="keyword">instanceof</span> <span class="built_in">Date</span>) year = year.getFullYear();</div><div class="line">            <span class="keyword">return</span> (year % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; year % <span class="number">100</span> != <span class="number">0</span>) || (year % <span class="number">400</span> == <span class="number">0</span>);</div><div class="line">        &#125;,</div><div class="line">        <span class="comment">/**</span></div><div class="line"><span class="comment">         * 获取某一年某一月的总天数，没有任何参数时获取当前月份的</span></div><div class="line"><span class="comment">         * 方式一：$.getMonthDays();</span></div><div class="line"><span class="comment">         * 方式二：$.getMonthDays(new Date());</span></div><div class="line"><span class="comment">         * 方式三：$.getMonthDays(2013, 12);</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        getMonthDays: <span class="function"><span class="keyword">function</span>(<span class="params">date, month</span>)</span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            <span class="keyword">var</span> y, m;</div><div class="line">            <span class="keyword">if</span>(date == <span class="literal">undefined</span>) date = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">            <span class="keyword">if</span>(date <span class="keyword">instanceof</span> <span class="built_in">Date</span>)</div><div class="line">            &#123;</div><div class="line">                y = date.getFullYear();</div><div class="line">                m = date.getMonth();</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> date == <span class="string">'number'</span>)</div><div class="line">            &#123;</div><div class="line">                y = date;</div><div class="line">                m = month<span class="number">-1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">var</span> days = [<span class="number">31</span>, <span class="number">28</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>]; <span class="comment">// 非闰年的一年中每个月份的天数</span></div><div class="line">            <span class="comment">//如果是闰年并且是2月</span></div><div class="line">            <span class="keyword">if</span>(m == <span class="number">1</span> &amp;&amp; <span class="keyword">this</span>.isLeapYear(y)) <span class="keyword">return</span> days[m]+<span class="number">1</span>;</div><div class="line">            <span class="keyword">return</span> days[m];</div><div class="line">        &#125;,</div><div class="line">        <span class="comment">/**</span></div><div class="line"><span class="comment">         * 计算2日期之间的天数，用的是比较毫秒数的方法</span></div><div class="line"><span class="comment">         * 传进来的日期要么是Date类型，要么是yyyy-MM-dd格式的字符串日期</span></div><div class="line"><span class="comment">         * @param date1 日期一</span></div><div class="line"><span class="comment">         * @param date2 日期二</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        countDays: <span class="function"><span class="keyword">function</span>(<span class="params">date1, date2</span>)</span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            <span class="keyword">var</span> fmt = <span class="string">'yyyy-MM-dd'</span>;</div><div class="line">            <span class="comment">// 将日期转换成字符串，转换的目的是去除“时、分、秒”</span></div><div class="line">            <span class="keyword">if</span>(date1 <span class="keyword">instanceof</span> <span class="built_in">Date</span> &amp;&amp; date2 <span class="keyword">instanceof</span> <span class="built_in">Date</span>)</div><div class="line">            &#123;</div><div class="line">                date1 = <span class="keyword">this</span>.format(fmt, date1);</div><div class="line">                date2 = <span class="keyword">this</span>.format(fmt, date2);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(<span class="keyword">typeof</span> date1 === <span class="string">'string'</span> &amp;&amp; <span class="keyword">typeof</span> date2 === <span class="string">'string'</span>)</div><div class="line">            &#123;</div><div class="line">                date1 = <span class="keyword">this</span>.parse(date1, fmt);</div><div class="line">                date2 = <span class="keyword">this</span>.parse(date2, fmt);</div><div class="line">                <span class="keyword">return</span> (date1.getTime() - date2.getTime()) / (<span class="number">1000</span>*<span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span></div><div class="line">            &#123;</div><div class="line">                <span class="built_in">console</span>.error(<span class="string">'参数格式无效！'</span>);</div><div class="line">                <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;)(jQuery);</div></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/23/hello-world/" class="archive-article-date">
-  	<time datetime="2017-08-23T02:49:45.463Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/23/hello-world/">JavaScript的算法与数据结构</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/NorthNothing/NorthNothing.io.git/2017/09/07/时间格式化/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/09/05/浏览器默认行为/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
 
 
           </div>
@@ -215,8 +340,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

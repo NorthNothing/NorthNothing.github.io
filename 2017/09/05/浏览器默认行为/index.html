@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/NorthNothing/NorthNothing.io.git">
-  <title>Archives: 2017/8 | Nothing</title>
+  <title>Nothing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="关于浏览器默认行为Unable to preventDefault inside passive event listener html5  ​  touch事件  ​  chrome  ​  javascript   最近做项目经常在 chrome 的控制台看到如下提示： 1Unable to preventDefault inside passive event listener due to">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Nothing">
-<meta property="og:url" content="https://github.com/NorthNothing/NorthNothing.io.git/archives/2017/08/index.html">
+<meta property="og:url" content="https://github.com/NorthNothing/NorthNothing.io.git/2017/09/05/浏览器默认行为/index.html">
 <meta property="og:site_name" content="Nothing">
+<meta property="og:description" content="关于浏览器默认行为Unable to preventDefault inside passive event listener html5  ​  touch事件  ​  chrome  ​  javascript   最近做项目经常在 chrome 的控制台看到如下提示： 1Unable to preventDefault inside passive event listener due to">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-05T07:48:46.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nothing">
+<meta name="twitter:description" content="关于浏览器默认行为Unable to preventDefault inside passive event listener html5  ​  touch事件  ​  chrome  ​  javascript   最近做项目经常在 chrome 的控制台看到如下提示： 1Unable to preventDefault inside passive event listener due to">
   
     <link rel="alternative" href="/atom.xml" title="Nothing" type="application/atom+xml">
   
@@ -150,49 +154,175 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-浏览器默认行为" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="关于浏览器默认行为"><a href="#关于浏览器默认行为" class="headerlink" title="关于浏览器默认行为"></a>关于浏览器默认行为</h1><h1 id="Unable-to-preventDefault-inside-passive-event-listener"><a href="#Unable-to-preventDefault-inside-passive-event-listener" class="headerlink" title="Unable to preventDefault inside passive event listener"></a><a href="https://segmentfault.com/a/1190000008512184" target="_blank" rel="external">Unable to preventDefault inside passive event listener</a></h1><ul>
+<li><p><a href="https://segmentfault.com/t/html5/blogs" target="_blank" rel="external">html5</a></p>
+</li>
+<li><p>​</p>
+</li>
+<li><p><a href="https://segmentfault.com/t/touch%E4%BA%8B%E4%BB%B6/blogs" target="_blank" rel="external">touch事件</a></p>
+</li>
+<li><p>​</p>
+</li>
+<li><p><a href="https://segmentfault.com/t/chrome/blogs" target="_blank" rel="external">chrome</a></p>
+</li>
+<li><p>​</p>
+</li>
+<li><p><a href="https://segmentfault.com/t/javascript/blogs" target="_blank" rel="external">javascript</a></p>
+</li>
+</ul>
+<p>最近做项目经常在 chrome 的控制台看到如下提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Unable to preventDefault inside passive event listener due to target being treated as passive. See https://www.chromestatus.com/features/5093566007214080</div></pre></td></tr></table></figure>
+<p>于是 Google 了一番，找到这篇文章，有了详细解释。<a href="https://developers.google.com/web/updates/2017/01/scrolling-intervention" target="_blank" rel="external">Making touch scrolling fast by default</a></p>
+<p>简而言之：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">由于浏览器必须要在执行事件处理函数之后，才能知道有没有掉用过 preventDefault() ，这就导致了浏览器不能及时响应滚动，略有延迟。</div><div class="line"></div><div class="line">所以为了让页面滚动的效果如丝般顺滑，从 chrome56 开始，在 window、document 和 body 上注册的 touchstart 和 touchmove 事件处理函数，会默认为是 passive: true。浏览器忽略 preventDefault() 就可以第一时间滚动了。</div><div class="line"></div><div class="line">举例：</div><div class="line">wnidow.addEventListener(&apos;touchmove&apos;, func) 效果和下面一句一样</div><div class="line">wnidow.addEventListener(&apos;touchmove&apos;, func, &#123; passive: true &#125;)</div></pre></td></tr></table></figure>
+<p>这就导致了一个问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">如果在以上这 3 个元素的 touchstart 和 touchmove 事件处理函数中调用 e.preventDefault() ，会被浏览器忽略掉，并不会阻止默认行为。</div></pre></td></tr></table></figure>
+<p>测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">  margin: 0;</div><div class="line">  height: 2000px;</div><div class="line">  background: linear-gradient(to bottom, red, green);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 在 chrome56 中，照样滚动，而且控制台会有提示，blablabla</div><div class="line">window.addEventListener(&apos;touchmove&apos;, e =&gt; e.preventDefault())</div></pre></td></tr></table></figure>
+<p>那么如何解决这个问题呢？不让控制台提示，而且 preventDefault() 有效果呢？<br>两个方案：<br>1、注册处理函数时，用如下方式，明确声明为不是被动的<br>window.addEventListener(‘touchmove’, func, { passive: false })</p>
+<p>2、应用 CSS 属性 <code>touch-action: none;</code> 这样任何触摸事件都不会产生默认行为，但是 touch 事件照样触发。<br>touch-action 还有很多选项，详细请参考<a href="https://w3c.github.io/pointerevents/#the-touch-action-css-property" target="_blank" rel="external">touch-action</a></p>
+<p>[注]未来可能所有的元素的 touchstart touchmove 事件处理函数都会默认为 passive: true</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/23/hello-world/" class="archive-article-date">
-  	<time datetime="2017-08-23T02:49:45.463Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/23/hello-world/">JavaScript的算法与数据结构</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/NorthNothing/NorthNothing.io.git/2017/09/05/浏览器默认行为/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/09/07/时间格式化/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/08/23/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript的算法与数据结构</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
 
 
           </div>
@@ -215,8 +345,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
