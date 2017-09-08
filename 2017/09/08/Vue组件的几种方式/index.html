@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/NorthNothing/NorthNothing.io.git">
-  <title>Archives: 2017 | Nothing</title>
+  <title>Vue组件的几种方式 | Nothing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Nothing">
-<meta property="og:url" content="https://github.com/NorthNothing/NorthNothing.io.git/archives/2017/index.html">
+  <meta name="description" content="vue组件实现Tab切换功能1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue组件的几种方式">
+<meta property="og:url" content="https://github.com/NorthNothing/NorthNothing.io.git/2017/09/08/Vue组件的几种方式/index.html">
 <meta property="og:site_name" content="Nothing">
+<meta property="og:description" content="vue组件实现Tab切换功能1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-08T06:57:46.543Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nothing">
+<meta name="twitter:title" content="Vue组件的几种方式">
+<meta name="twitter:description" content="vue组件实现Tab切换功能1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;">
   
     <link rel="alternative" href="/atom.xml" title="Nothing" type="application/atom+xml">
   
@@ -150,130 +154,156 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Vue组件的几种方式" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Vue组件的几种方式
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/08/Vue组件的几种方式/" class="archive-article-date">
+
+        
+        <a href="/2017/09/08/Vue组件的几种方式/" class="archive-article-date">
   	<time datetime="2017-09-08T06:50:59.342Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-08</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/08/Vue组件的几种方式/">Vue组件的几种方式</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="vue组件实现Tab切换功能"><a href="#vue组件实现Tab切换功能" class="headerlink" title="vue组件实现Tab切换功能"></a>vue组件实现Tab切换功能</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;utf-8&quot;/&gt;</div><div class="line">    &lt;title&gt;Demo&lt;/title&gt;</div><div class="line">    &lt;script src=&quot;https://cdn.bootcss.com/vue/2.4.1/vue.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">    &lt;div id=&quot;app&quot;&gt;</div><div class="line">        &lt;div :is=&quot;tabShow&quot;&gt;&lt;/div&gt;</div><div class="line">        &lt;button @click=&quot;tab(&apos;A&apos;)&quot;&gt;tab1&lt;/button&gt;</div><div class="line">        &lt;button @click=&quot;tab(&apos;B&apos;)&quot;&gt;tab2&lt;/button&gt;</div><div class="line">        &lt;button @click=&quot;tab(&apos;C&apos;)&quot;&gt;tab3&lt;/button&gt;</div><div class="line">        &lt;button @click=&quot;tab(&apos;D&apos;)&quot;&gt;tab4&lt;/button&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;script&gt;</div><div class="line"></div><div class="line">      A = &#123;</div><div class="line">        template:`&lt;h1&gt;我是第一一一个tab&lt;/h1&gt;`</div><div class="line">      &#125;</div><div class="line">      B = &#123;</div><div class="line">        template:`&lt;h1&gt;我是第二二二个tab&lt;/h1&gt;`</div><div class="line">      &#125;</div><div class="line">      C = &#123;</div><div class="line">        template:`&lt;h1&gt;我是第三三三个tab&lt;/h1&gt;`</div><div class="line">      &#125;</div><div class="line">      D = &#123;</div><div class="line">        template:`&lt;h1&gt;我是第四四四个tab&lt;/h1&gt;`</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      new Vue(&#123;</div><div class="line">        el:&apos;#app&apos;,</div><div class="line">        data()&#123;</div><div class="line">          return &#123;</div><div class="line">            tabShow:&apos;A&apos;</div><div class="line">          &#125;</div><div class="line">        &#125;,</div><div class="line">        components:&#123;</div><div class="line">            &apos;A&apos;: A,</div><div class="line">            &apos;B&apos;: B,</div><div class="line">            &apos;C&apos;: C,</div><div class="line">            &apos;D&apos;: D</div><div class="line">        &#125;,</div><div class="line">        methods:&#123;</div><div class="line">            tab(currentShowTab)&#123;</div><div class="line">                this.tabShow = currentShowTab;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">      &#125;)</div><div class="line"></div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h4 id="两个组件方式，还有一种是-vue-为后缀的文件组件-需要模块化才能用"><a href="#两个组件方式，还有一种是-vue-为后缀的文件组件-需要模块化才能用" class="headerlink" title="两个组件方式，还有一种是 .vue 为后缀的文件组件,需要模块化才能用"></a>两个组件方式，还有一种是 .vue 为后缀的文件组件,需要模块化才能用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;utf-8&quot;/&gt;</div><div class="line">    &lt;title&gt;Demo&lt;/title&gt;</div><div class="line">    &lt;script src=&quot;https://unpkg.com/vue&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=&quot;app&quot;&gt;</div><div class="line"></div><div class="line">      &lt;!-- 一个全局化组件 hello --&gt;</div><div class="line">      &lt;hello&gt;&lt;/hello&gt;</div><div class="line">      &lt;hr&gt;</div><div class="line">      &lt;!-- 一个局部组件 world --&gt;</div><div class="line">      &lt;world&gt;&lt;/world&gt; </div><div class="line"></div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;script&gt;</div><div class="line"></div><div class="line">      //注意：组件要写在实例之前，不然就会报错</div><div class="line">      Vue.component(&apos;hello&apos;,&#123;</div><div class="line">        template:`&lt;h1&gt;我是一个全局话组件&lt;/h1&gt;`</div><div class="line">      &#125;);</div><div class="line"></div><div class="line">      //局部组价 需要用components 去注册</div><div class="line">      world = &#123;</div><div class="line">        template:`&lt;h2&gt;我是一个局部组件&lt;/h2&gt;`</div><div class="line">      &#125;</div><div class="line">      //实例</div><div class="line">      new Vue(&#123;</div><div class="line">        el:&apos;#app&apos;,</div><div class="line">        data()&#123;</div><div class="line">          return &#123;&#125;</div><div class="line">        &#125;,</div><div class="line">        //components 注册world组件</div><div class="line">        components:&#123;</div><div class="line">          &apos;world&apos;: world</div><div class="line">        &#125;</div><div class="line">      &#125;)</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h4 id="单项数据流，父组件向子组件传参数，用props接受"><a href="#单项数据流，父组件向子组件传参数，用props接受" class="headerlink" title="单项数据流，父组件向子组件传参数，用props接受"></a>单项数据流，父组件向子组件传参数，用props接受</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;utf-8&quot;/&gt;</div><div class="line">    &lt;title&gt;Demo&lt;/title&gt;</div><div class="line">    &lt;script src=&quot;https://unpkg.com/vue&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">    &lt;div id=&quot;app&quot;&gt;</div><div class="line"></div><div class="line">      &lt;!-- 一个局部组件world， 把message数据传给子组件--&gt;</div><div class="line"></div><div class="line">      &lt;world :here=&quot;message&quot;&gt;&lt;/world&gt; </div><div class="line"></div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;script&gt;</div><div class="line"></div><div class="line">      world = &#123;</div><div class="line">        // props接收父组件传过来的here</div><div class="line">        props:[&apos;here&apos;],</div><div class="line">        template:`&lt;h2&gt; &#123;&#123;here&#125;&#125; &lt;/h2&gt;`</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      new Vue(&#123;</div><div class="line">        el:&apos;#app&apos;,</div><div class="line">        data()&#123;</div><div class="line">          return &#123;</div><div class="line">            message:&apos;不让任何事情成为你不去学习的理由--李华明&apos;</div><div class="line">          &#125;</div><div class="line">        &#125;,</div><div class="line">        components:&#123;</div><div class="line">          &apos;world&apos;: world</div><div class="line">        &#125;</div><div class="line">      &#125;)</div><div class="line"></div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h4 id="嵌套的组件使用方式"><a href="#嵌套的组件使用方式" class="headerlink" title="嵌套的组件使用方式"></a>嵌套的组件使用方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;utf-8&quot;/&gt;</div><div class="line">    &lt;title&gt;Demo&lt;/title&gt;</div><div class="line">    &lt;script src=&quot;https://unpkg.com/vue&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">    &lt;div id=&quot;app&quot;&gt;</div><div class="line">      &lt;world&gt;&lt;/world&gt; </div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;script&gt;</div><div class="line">      // 嵌套的子组件必须卸载父组件之上</div><div class="line">      city = &#123;</div><div class="line">        template: `&lt;div&gt;我是子组件的子组件&lt;/div&gt;`</div><div class="line">      &#125;</div><div class="line">      //嵌套的组件</div><div class="line">      world = &#123;</div><div class="line">        template:`</div><div class="line">            &lt;div&gt;</div><div class="line">                &lt;h2&gt;我是子组件&lt;/h2&gt;</div><div class="line">                &lt;city&gt;&lt;/city&gt;</div><div class="line">            &lt;/div&gt;`,</div><div class="line">        components:&#123;</div><div class="line">            &apos;city&apos;: city</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">      new Vue(&#123;</div><div class="line">        el:&apos;#app&apos;,</div><div class="line">        data()&#123;</div><div class="line">          return &#123;</div><div class="line">            message:&apos;不让任何事情成为你不去学习的理由--李华明&apos;</div><div class="line">          &#125;</div><div class="line">        &#125;,</div><div class="line">        components:&#123;</div><div class="line">          &apos;world&apos;: world</div><div class="line">        &#125;</div><div class="line">      &#125;)</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+      
 
-        <div class="article-info info-on-right">
-          
-          
-
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/NorthNothing/NorthNothing.io.git/2017/09/08/Vue组件的几种方式/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/07/时间格式化/" class="archive-article-date">
-  	<time datetime="2017-09-07T09:55:34.319Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-07</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/07/时间格式化/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">日期格式化和解析工具类</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/07/时间格式化/">日期格式化和解析工具类</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/05/浏览器默认行为/" class="archive-article-date">
-  	<time datetime="2017-09-05T07:43:32.142Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/05/浏览器默认行为/">浏览器默认行为</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/23/hello-world/" class="archive-article-date">
-  	<time datetime="2017-08-23T02:49:45.463Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/23/hello-world/">JavaScript的算法与数据结构</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -296,8 +326,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
